@@ -88,6 +88,42 @@
       "Address": "!@12",
       "EmployeeImg": "usermale",
       "Check": true
+    },
+    {
+      "EmployeeID": null,
+      "Employees": "aa@Gmail.com",
+      "Mail": "aa@Gmail.com",
+      "dob": "2024-07-19T07:00:00.000Z",
+      "Gender": "male",
+      "Designation": "aa@Gmail.com",
+      "Location": "zxczx@gmail.com",
+      "Status": "Active",
+      "Trustworthiness": "Perfect",
+      "Rating": "2",
+      "Software": null,
+      "CurrentSalary": null,
+      "Address": "!@12",
+      "EmployeeImg": "usermale",
+      "Check": true,
+      "id": "4c5d"
+    },
+    {
+      "id": "851f",
+      "Rating": "2",
+      "CurrentSalary": "123",
+      "EmployeeID": null,
+      "Employees": "aa@Gmail.com",
+      "Mail": "aa@Gmail.com",
+      "dob": "2024-07-14T07:00:00.000Z",
+      "Gender": "male",
+      "Designation": "zxczx@gmail.com",
+      "Location": "AAMMMM",
+      "Status": "Active",
+      "Trustworthiness": "Sufficient",
+      "Software": "0",
+      "Address": "!@12",
+      "EmployeeImg": "usermale",
+      "Check": true
     }
   ]
 }

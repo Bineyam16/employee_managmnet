@@ -87,9 +87,31 @@ export class RegistrationDialogComponent implements OnInit, AfterViewInit {
   ];
   fetchGridData() {
     this.service.getEmployees().subscribe((data: any[]) => {
-      this.newdata = data;
+      this.newdata = this.processEmployeeData(data);
+      console.log(this.newdata,'this.newdata');
+      
     });
   }
+  processEmployeeData(data: any[]): any[] {
+    return data.map(employee => {
+      return {
+        ...employee,
+        CurrentSalary: typeof employee.CurrentSalary === 'string' ? parseFloat(employee.CurrentSalary) : employee.CurrentSalary
+      };
+    });
+  }
+
+  // Custom formatter for CurrentSalary column
+  public salaryFormatter = (field: string, data: any): string => {
+    if (typeof data[field] === 'string') {
+      // Handle string conversion to number
+      return parseFloat(data[field]).toFixed(2); // Format number as needed
+    } else if (typeof data[field] === 'number') {
+      return data[field].toFixed(2); // Format number as needed
+    } else {
+      return data[field]; // Fallback to original data
+    }
+  };
   onUpdateEmployee(updatedEmployee: any) {
     // Update employee in the data source
     const index = this.newdata.findIndex((e: { id: any; }) => e.id === updatedEmployee.id);

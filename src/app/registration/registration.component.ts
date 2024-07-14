@@ -116,6 +116,8 @@ export class RegistrationComponent implements OnInit, OnChanges {
 
   addEmployee(): void {
     const newEmployee = {
+      Rating: this.registrationForm.value.Rating ? Number(this.registrationForm.value.Rating) : null,
+      CurrentSalary: this.registrationForm.value.CurrentSalary ? Number(this.registrationForm.value.CurrentSalary) : null,
       ...this.registrationForm.value,
       EmployeeImg: 'usermale',
       Check: true
