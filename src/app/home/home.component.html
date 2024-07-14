@@ -1,0 +1,36 @@
+<div id="wrapper" style="margin-top: 2%;">
+    <div class="col-lg-12 col-sm-12 col-md-12" id="sidebar-section">
+        <div class="col-lg-12 col-sm-12 col-md-12">
+            <!--header-section  declaration -->
+            <div class="main-header" id="header-section">
+                <ul class="header-list">
+                    <li class="float-left header-style icon-menu" id="hamburger" (click)="openClick()"></li>
+                    <li class="float-left header-style nav-pane"><b>Navigation Pane</b></li>
+                </ul>
+            </div>
+            <!--end of header-section  declaration -->
+            <!-- sidebar element declaration -->
+            <ejs-sidebar id="sidebar-treeview" class="dock-menu" #sidebarTreeviewInstance [enableDock]='enableDock' [width]='width' [dockSize]='dockSize' (created)="onCreated($event)" style="visibility: hidden"
+                [mediaQuery]='mediaQuery' [target]='target' (close)="onClose($event)">
+                <div class="main-menu">
+                    <div>
+                        <!-- Treevie element declaration -->
+                        <ejs-treeview id="main-treeview" #treeviewInstance [fields]='field' expandOn='Click' (nodeClicked)="nodeClicked($event)"></ejs-treeview>
+
+                    </div>
+                </div>
+            </ejs-sidebar>
+            <!-- end of sidebar element -->
+
+            <!-- main-content declaration -->
+            <div class="main-content" id="main-text">
+                <div class="sidebar-content">
+                    
+                    
+                    <app-registration-dialog></app-registration-dialog>
+                </div>
+            </div>
+            <!-- end of main-content -->
+        </div>
+    </div>
+</div>

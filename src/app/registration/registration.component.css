@@ -1,0 +1,37 @@
+
+    .registration-form {
+      max-width: 1000px;
+      margin: 0 auto;
+      margin-top: 1%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #f9f9f9;
+    }
+  
+    .form-group {
+      margin-bottom: 15px;
+    }
+  
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  
+    .submit-group {
+      text-align: center;
+    }
+  
+    ejs-textbox,
+    ejs-datepicker,
+    ejs-dropdownlist {
+      display: block;
+      width: 100%;
+    }
+  
+    ejs-button {
+      display: inline-block;
+    }
+
+  

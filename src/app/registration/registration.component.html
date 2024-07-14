@@ -1,0 +1,58 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
+  <div class="form-group">
+    <label for="Employees"><i class="fa fa-user"></i> Name</label>
+    <ejs-textbox id="Employees" formControlName="Employees" placeholder="Enter Employee name"></ejs-textbox>
+  </div>
+  <div class="form-group">
+    <label for="Mail"><i class="fa fa-envelope"></i> Email</label>
+    <ejs-textbox id="Mail" formControlName="Mail" type="email" placeholder="Enter your email"></ejs-textbox>
+  </div>
+  <div class="form-group">
+    <label for="dob"><i class="fa fa-calendar"></i> Date of Birth</label>
+    <ejs-datepicker id="dob" formControlName="dob" placeholder="Select your date of birth"></ejs-datepicker>
+  </div>
+  <div class="form-group">
+    <label for="Gender"><i class="fa fa-venus-mars"></i> Gender</label>
+    <ejs-dropdownlist id="Gender" formControlName="Gender" [dataSource]="genders" [fields]="{ text: 'text', value: 'value' }" placeholder="Select your gender"></ejs-dropdownlist>
+  </div>
+  <div class="form-group">
+    <label for="Designation"><i class="fa fa-briefcase"></i> Designation</label>
+    <ejs-textbox id="Designation" formControlName="Designation" placeholder="Enter your designation"></ejs-textbox>
+  </div>
+  <div class="form-group">
+    <label for="Location"><i class="fa fa-map-marker"></i> Location</label>
+    <ejs-textbox id="Location" formControlName="Location" placeholder="Enter your location"></ejs-textbox>
+  </div>
+  <div class="form-group">
+    <label for="Status"><i class="fa fa-toggle-on"></i> Status</label>
+    <ejs-dropdownlist id="Status" formControlName="Status" [dataSource]="statuses" [fields]="{ text: 'text', value: 'value' }" placeholder="Select your status"></ejs-dropdownlist>
+  </div>
+  <div class="form-group">
+    <label for="Trustworthiness"><i class="fa fa-thumbs-up"></i> Trustworthiness</label>
+    <ejs-dropdownlist id="Trustworthiness" formControlName="Trustworthiness" [dataSource]="trustworthinessLevels" [fields]="{ text: 'text', value: 'value' }" placeholder="Select your trustworthiness"></ejs-dropdownlist>
+  </div>
+  <div class="form-group">
+    <label for="Rating"><i class="fa fa-star"></i> Rating</label>
+    <ejs-textbox id="Rating" formControlName="Rating" type="number" placeholder="Enter your rating" min="1" max="5"></ejs-textbox>
+  </div>
+  <div class="form-group">
+    <label for="Software"><i class="fa fa-laptop"></i> Software</label>
+    <ejs-textbox id="Software" formControlName="Software" type="number" placeholder="Enter software proficiency" min="0" max="100"></ejs-textbox>
+  </div>
+  <div class="form-group">
+    <label for="CurrentSalary"><i class="fa fa-money"></i> Salary</label>
+    <ejs-textbox id="CurrentSalary" formControlName="CurrentSalary" type="number" placeholder="Enter your salary"></ejs-textbox>
+  </div>
+  <div class="form-group">
+    <label for="Address"><i class="fa fa-address-card"></i> Address</label>
+    <ejs-textbox id="Address" formControlName="Address" placeholder="Enter your address"></ejs-textbox>
+  </div>
+  <div class="form-group submit-group">
+    <!-- Register Button -->
+    <button ejs-button type="submit" [disabled]="!registrationForm.valid" *ngIf="!employeeData">Register</button>
+    <!-- Update Button -->
+    <button ejs-button type="button" (click)="updateEmployee()" [disabled]="!registrationForm.valid "*ngIf="employeeData">Update</button>
+    <!-- Delete Button -->
+    <!-- <button ejs-button type="button" (click)="deleteEmployee()" >Delete</button> -->
+  </div>
+</form>

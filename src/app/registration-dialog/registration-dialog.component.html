@@ -1,0 +1,111 @@
+<div class="control-section">
+    <ejs-dropdownlist id='value' #sample index='0' width='220' [dataSource]='ddlData' (change)='valueChange($event)' [fields]='fields' [popupHeight]='height'></ejs-dropdownlist>
+    <span id='msg'></span>
+    <br/>
+    <button class="e-control e-btn e-primary" style="margin-left: 95%;" (click)="onOpenDialogg()">Add New</button>
+
+    <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='newdata' [query]='query' rowHeight='38' [allowSelection]='true' [loadingIndicator]='loadingIndicator' height='400' (dataBound)='onDataBound($event)' [enableHover]='false' [enableHeaderFocus]='true' [selectionSettings]='selectionSettings' [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='true' [editSettings]='editSettings'>
+      <e-columns>
+        <e-column type='checkbox' [allowFiltering]='false' [allowSorting]='false' width='60'></e-column>
+        <e-column field='EmployeeID' [visible]='false' headerText='Employee ID' width='130' [isPrimaryKey]='true'></e-column>
+        <e-column field='Employees' headerText='Employee Name' clipMode='EllipsisWithTooltip' width='200'>
+          <ng-template #template let-newdata>
+            <div>
+              <div class="empimg">
+                <span class="e-userimg"></span>
+              </div>
+              <span id="Emptext">{{newdata.Employees}}</span>
+            </div>
+          </ng-template>
+        </e-column>
+        <e-column field='Designation' headerText='Designation' clipMode='EllipsisWithTooltip' width='170'></e-column>
+        <e-column field='Mail' headerText='Mail' [filter]='filterSettings' width='230'></e-column>
+        <e-column field='Location' headerText='Location' width='140'>
+          <ng-template #template let-newdata>
+            <div class="loc">
+              <img src="https://ej2.syncfusion.com/angular/demos/assets/grid/images/Map.png" class="e-image" alt="" />
+              <span id="locationtext">{{newdata.Location}}</span>
+            </div>
+          </ng-template>
+        </e-column>
+        <e-column field='Status' headerText='Status' width='150'>
+          <ng-template #template let-newdata>
+            <div *ngIf="newdata.Status === 'Active'; else login" class="statustemp e-activecolor">
+              <span class="statustxt e-activecolor">{{newdata.Status}}</span>
+            </div>
+            <ng-template #login>
+              <div class="statustemp e-inactivecolor">
+                <span class="statustxt e-inactivecolor">{{newdata.Status}}</span>
+              </div>
+            </ng-template>
+          </ng-template>
+        </e-column>
+        <e-column field='Trustworthiness' headerText='Trustworthiness' width='200'>
+          <ng-template #template let-newdata>
+            <div class="trust">
+              <img style="width: 31px; height: 24px" src="https://ej2.syncfusion.com/angular/demos/assets/grid/images/{{newdata.Trustworthiness}}.png" alt="" />
+              <span id="Trusttext">{{newdata.Trustworthiness}}</span>
+            </div>
+          </ng-template>
+        </e-column>
+        <e-column field='Rating' [allowFiltering]='false' headerText='Rating' width='160'>
+          <ng-template #template let-newdata>
+            <div class="rate">
+              <div class="rating">
+                <input ejs-rating [readOnly]="true" value={{newdata.Rating}} cssClass='custom-rating'/>
+              </div>
+            </div>
+          </ng-template>
+        </e-column>
+        <!-- <e-column field='Software' headerText='Software' [allowSorting]='false' [allowFiltering]='false' width='180'>
+          <ng-template #template let-newdata>
+            <div id="myProgress" class="pbar">
+              <div id="myBar" *ngIf="newdata.Status === 'Inactive';" [style.width.%]= newdata.Software class="bar progressdisable">
+                <div id="pbarlabel" class="barlabel">{{newdata.Software}}%</div>
+              </div>
+              <div id="myBar" *ngIf="newdata.Status === 'Active';" [style.width.%]= newdata.Software class="bar">
+                <div id="pbarlabel" class="barlabel">{{newdata.Software}}%</div>
+              </div>
+            </div>
+          </ng-template>
+        </e-column> -->
+        <e-column field='CurrentSalary' headerText='Current Salary' [filter]='filterSettings' format='C2' width='160'></e-column>
+        <e-column field='Address' headerText='Address' [filter]='filterSettings' clipMode='EllipsisWithTooltip' width='240'></e-column>
+        <e-column headerText='Update' width='150'>
+          <ng-template #template let-newdata>
+            <button class="e-control e-btn" (click)="onOpenDialog(newdata)">Update</button>
+            <!-- <button class="e-control e-btn" (click)="onOpenDialog($event, newdata )">Update</button> -->
+          </ng-template>
+        </e-column>
+        <e-column headerText='Delete' width='150'>
+          <ng-template #template let-newdata>
+            <button class="e-control e-btn" (click)="onDeleteRow(newdata.id)">Delete</button>
+          </ng-template>
+        </e-column>
+      </e-columns>
+    </ejs-grid>
+    <div #container class='root-container'></div>
+    
+    <!-- Dialog for Update -->
+     <div *ngIf="showdialog">
+    <ejs-dialog #updateDialog header='<div class="dialog-header">Update Employee</div>' [target]='targetElement'
+                [animationSettings]='animationSettings' width='80%' max-width='600px' max-height='90vh' showCloseIcon='false' [buttons]='updateDialogButtons'>
+      <div class="dialog-content">
+        <app-registration [employeeData]="selectedEmployee" (onSave)="onUpdateEmployee($event)" (onSave)="onSaveEmployee($event)"></app-registration>
+      </div>
+    </ejs-dialog>
+</div>
+<div *ngIf="showadddialog">
+    <ejs-dialog #registerDialog header='<div class="dialog-header">Register Employee</div>' [target]='targetElement'
+                [animationSettings]='animationSettings' width='80%' max-width='600px' max-height='90vh' showCloseIcon='false' [buttons]='Register'>
+      <div class="dialog-content">
+        <app-registration [employeeData]="selectedEmployee"  (onSave)="onUpdateEmploye($event)" (onSave)="onSaveEmployee($event)"(formReset)="handleFormReset()" [resetFormm]="resetFormTrigger"></app-registration>
+        <!-- [employeeData]="selectedEmployee"
+                       [resetFormm]="resetFormTrigger" 
+                       (onSave)="onSaveEmployee($event)"
+                       (formReset)="handleFormReset()"> -->
+      </div>
+    </ejs-dialog>
+</div>
+  </div>
+  
