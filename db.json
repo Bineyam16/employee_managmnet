@@ -88,23 +88,6 @@
       "Address": "!@12",
       "EmployeeImg": "usermale",
       "Check": true
-    },
-    {
-      "EmployeeID": "81ac6eb0-21da-415c-80a1-aaf2c56eb7ac",
-      "Employees": "Kathryn Fullere",
-      "Mail": "kathryn98@jourrapide.com",
-      "Gender": "Male",
-      "Designation": "Designer",
-      "Location": "Mexico",
-      "Status": "Active",
-      "Trustworthiness": "Sufficient",
-      "Rating": 3,
-      "Software": 11,
-      "CurrentSalary": 1612,
-      "Address": "Luisenstr. 48",
-      "EmployeeImg": "usermale",
-      "Check": true,
-      "id": "445b"
     }
   ]
 }
