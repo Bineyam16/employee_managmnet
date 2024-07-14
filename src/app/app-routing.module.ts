@@ -6,9 +6,9 @@ import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
-  { path: '**', component: RegistrationDialogComponent },
+  { path: 'registration', component: RegistrationDialogComponent },
   { path: 'registrations', component: RegistrationComponent },
-  { path: 'home', component: HomeComponent }
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
