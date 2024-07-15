@@ -8,7 +8,9 @@ import { Observable } from "rxjs";
 })
 export class ServiceServiceService {
 
-  private apiUrl = 'http://localhost:3000/employees';
+  // private apiUrl = 'http://localhost:3000/employees';
+  private apiUrl= 'https://employee-managmnet-vvcq.vercel.app/api/employees'
+
 
   constructor(private http: HttpClient) {}
 
